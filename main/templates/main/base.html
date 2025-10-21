@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Cachet Bearers Montessori School{% endblock %}</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <style>
+    /* --- Navbar Styling (Light Green Theme) --- */
+    .navbar {
+      background-color: #32CD32 !important; /* light green */
+    }
+    .navbar-brand {
+      color: white !important;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .navbar-brand:hover {
+      color: #e8ffe0 !important;
+    }
+    .nav-link {
+      color: white !important;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #d4ffb2 !important; /* softer green highlight */
+    }
+
+    /* --- Footer --- */
+    footer {
+      background-color: #32CD32;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* --- General Text & Headings --- */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .text-primary {
+      color: #32CD32 !important;
+    }
+    .bg-primary {
+      background-color: #32CD32 !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" width="35" height="35" class="me-2">
+      Cachet Bearers Montessori School
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'academics' %}active{% endif %}" href="{% url 'academics' %}">Academics</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'admissions' %}active{% endif %}" href="{% url 'admissions' %}">Admissions</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'fees' %}active{% endif %}" href="{% url 'fees' %}">Fees</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<main>
+  {% block content %}
+  {% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="text-center py-3 mt-5">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Cachet Bearers Montessori School. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

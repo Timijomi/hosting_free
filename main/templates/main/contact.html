@@ -1,0 +1,140 @@
+{% extends "main/base.html" %}
+{% block title %}Contact Us - Cachet Bearers Montessori School{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Reach out via the form below or visit our school.</p>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form method="POST">
+          {% csrf_token %}
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info and Map -->
+      <div class="contact-info">
+       <h3>Our Contact Information</h3>
+        <p><strong>School Name:</strong> Cachet Bearers Montessori School</p>
+        <p><strong>Address:</strong>  I YUSUF SAKIRU AVENUE, MERCYLAND ESTATE, IPAJA, LAGOS, Nigeria</p>
+        <p><strong>Phone:</strong> +234 805 873 7725, +234 708 101 4591</p>
+        <p><strong>Email:</strong> cachetbearerstech@gmail.com</p>
+
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.33819542802!2d3.343948374729377!3d6.599402993396851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b93aee73ac5ef%3A0xf0e5a27a1a3efc68!2sIkeja!5e0!3m2!1sen!2sng!4v1696848887623!5m2!1sen!2sng"
+            width="100%"
+            height="250"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 60px 0;
+    background-color: #0af706ff;
+  }
+
+  .contact-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .contact-section p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 40px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    align-items: start;
+  }
+
+  .contact-form, .contact-info {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+
+  .contact-form h3, .contact-info h3 {
+    margin-bottom: 15px;
+    color: #006622b6;
+  }
+
+  .contact-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+  }
+
+  .contact-form button {
+    margin-top: 20px;
+    background-color: #006629c8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .contact-form button:hover {
+    background-color: #00aa0379;
+  }
+
+  .map-container {
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .alert {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions - Cachet Bearers Montessori School</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <style>
+    /* Navbar - Light Green Theme */
+    .navbar {
+      background-color: #32CD32 !important; /* light green */
+    }
+    .navbar-brand {
+      color: white !important;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .navbar-brand:hover {
+      color: #e8ffe0 !important;
+    }
+    .nav-link {
+      color: white !important;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #d4ffb2 !important; /* soft green highlight */
+    }
+
+    /* Footer */
+    footer {
+      background-color: #32CD32;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Page Theme */
+    .text-primary {
+      color: #32CD32 !important;
+    }
+    .bg-primary {
+      background-color: #32CD32 !important;
+    }
+
+    /* Card Styling */
+    .card {
+      border-radius: 12px;
+    }
+
+    /* Headings */
+    h1, h2, h3 {
+      font-family: 'Segoe UI', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="{% url 'home' %}">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" width="35" height="35" class="me-2 rounded-circle">
+      Cachet Bearers Montessori School
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'academics' %}active{% endif %}" href="{% url 'academics' %}">Academics</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'admissions' %}active{% endif %}" href="{% url 'admissions' %}">Admissions</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'fees' %}active{% endif %}" href="{% url 'fees' %}">Fees</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="py-5 text-center bg-light">
+  <div class="container">
+    <h1 class="fw-bold mb-3 text-primary">Admissions</h1>
+    <p class="lead text-muted">Join our community of excellence — where learning begins with love and discipline.</p>
+  </div>
+</section>
+
+<!-- Admission Details -->
+<section class="py-5">
+  <div class="container">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-5">
+        <h2 class="fw-bold text-primary mb-4">Admission Overview</h2>
+        <p>At <strong>Cachet Bearers Montessori School</strong>, we welcome students into a nurturing environment designed to inspire creativity, confidence, and growth. Our admission process is straightforward and transparent.</p>
+
+        <h3 class="fw-bold text-primary mt-5 mb-3">Admission Procedure</h3>
+        <ol class="ps-3">
+          <li class="mb-2">Obtain an admission form from the school office or website.</li>
+          <li class="mb-2">Fill the form correctly and attach:
+            <ul>
+              <li>Two passport photographs</li>
+              <li>Birth certificate or declaration of age</li>
+              <li>Previous school results or transfer certificate</li>
+              <li>Medical fitness report</li>
+            </ul>
+          </li>
+          <li class="mb-2">Submit all documents to the admissions office.</li>
+          <li class="mb-2">Attend an interview or entrance test as scheduled.</li>
+          <li class="mb-2">Receive your admission letter upon successful evaluation.</li>
+        </ol>
+
+        <h3 class="fw-bold text-primary mt-5 mb-3">Age Requirement</h3>
+        <p>
+          <strong>Nursery Section:</strong> 2 – 5 years old<br>
+          <strong>Primary Section:</strong> 5 – 11 years old<br>
+        </p>
+
+        <h3 class="fw-bold text-primary mt-5 mb-3">Entrance Assessments</h3>
+        <p>Every child seeking admission into our Nursery or Primary section must sit for an entrance assessment. This helps us evaluate academic readiness and place the student appropriately.</p>
+
+        <h3 class="fw-bold text-primary mt-5 mb-3">Important Dates</h3>
+        <ul>
+          <li>Admission Forms Available: January – August</li>
+          <li>Entrance Examination: March & June</li>
+          <li>Resumption for New Session: September</li>
+        </ul>
+
+        <h3 class="fw-bold text-primary mt-5 mb-3">Contact Our Admissions Office</h3>
+        <p>
+          <strong>Phone:</strong> +234 812 221 2590 <br>
+          <strong>Email:</strong> cachetbearerstech@gmail.com<br>
+          <strong>Office Hours:</strong> Monday – Friday, 8:00 AM – 4:00 PM
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-white text-center p-3 mt-5">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Cachet Bearers Montessori School. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

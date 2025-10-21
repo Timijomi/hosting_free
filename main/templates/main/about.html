@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Cachet Bearers Montessori School</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <style>
+    /* --- Card Hover Animations --- */
+    .leadership-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 15px;
+    }
+
+    .leadership-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .leadership-card img {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      border-radius: 12px;
+    }
+
+    .leadership-card:hover img {
+      transform: scale(1.05);
+      opacity: 0.95;
+    }
+
+    /* --- Heading & Text Styling --- */
+    h1, h2, h3, h5 {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .fw-bold {
+      color: #32CD32; /* Light green for bold headings */
+    }
+
+    .list-group-item {
+      border: none;
+      font-weight: 500;
+    }
+
+    /* --- Navbar Brand Styling --- */
+    .navbar-brand {
+      color: #ffffff !important; /* Make school name visible */
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    footer {
+      font-size: 0.9rem;
+    }
+
+    /* --- Custom Light Green Theme --- */
+    .bg-primary {
+      background-color: #32CD32 !important; /* Light green navbar/footer */
+    }
+
+    .text-primary {
+      color: #32CD32 !important;
+    }
+
+    .nav-link {
+      color: white !important;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #d4ffb2 !important; /* Softer green highlight */
+    }
+
+    .navbar-dark .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    footer {
+      background-color: #32CD32;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container">
+    <!-- Optional Logo beside the name -->
+    <a class="navbar-brand fw-bold" href="/">
+      <img src="{% static 'images/logo.png' %}" alt="Logo">
+      Cachet Bearers Montessori School
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/about/">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/academics/">Academics</a></li>
+        <li class="nav-item"><a class="nav-link" href="/gallery/">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admissions/">Admissions</a></li>
+        <li class="nav-item"><a class="nav-link" href="/fees/">Fees</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- About Section -->
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h1 class="fw-bold mb-4 text-primary">About Our School</h1>
+    <p class="lead text-muted mb-5">
+      Cachet Bearers Montessori School is dedicated to excellence in education, creativity, and personal growth.
+    </p>
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <h3 class="fw-bold text-dark">Our Story</h3>
+        <p>
+          Founded in 2007, Cachet Bearers Montessori School has grown into one of the most respected educational institutions in the region, 
+          providing quality education from nursery to primary levels. Our aim is to nurture confident, curious, and compassionate learners.
+        </p>
+      </div>
+      <div class="col-md-6 mb-4">
+        <h3 class="fw-bold text-dark">Our Core Values</h3>
+        <ul class="list-group list-group-flush text-start shadow-sm rounded">
+          <li class="list-group-item">Critical Thinking</li>
+          <li class="list-group-item">Gratitude</li>
+          <li class="list-group-item">Spirituality</li>
+          <li class="list-group-item">Integrity</li>
+          <li class="list-group-item">Team Work</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Leadership & Directors Section -->
+<section class="py-5 text-center bg-white">
+  <div class="container">
+    <h2 class="fw-bold mb-4 text-primary">Meet Our Leadership</h2>
+    <p class="lead text-muted mb-5">
+      The team behind our vision of academic excellence and holistic child development.
+    </p>
+
+    <div class="row justify-content-center g-4">
+
+      <!-- Administrator -->
+      <div class="col-md-5 col-sm-12">
+        <div class="card leadership-card shadow-sm border-0 p-4">
+          <img src="{% static 'images/headteacher.jpg' %}" 
+               alt="School Administrator" 
+               class="mb-3 mx-auto d-block"
+               style="width: 100%; max-width: 400px; height: 350px; object-fit: cover;">
+          <h5 class="fw-bold">Mrs. Grace Amarachi Oamen</h5>
+          <p class="text-muted mb-2">School Administrator</p>
+          <p class="small text-secondary">
+            With years of experience in early childhood education, Mrs. Oamen leads the school with compassion, 
+            discipline, and a deep commitment to the growth of every learner.
+          </p>
+        </div>
+      </div>
+
+      <!-- Director -->
+      <div class="col-md-5 col-sm-12">
+        <div class="card leadership-card shadow-sm border-0 p-4">
+          <img src="{% static 'images/director1.jpg' %}" 
+               alt="Director of Academics" 
+               class="mb-3 mx-auto d-block"
+               style="width: 100%; max-width: 400px; height: 350px; object-fit: cover;">
+          <h5 class="fw-bold">Dr. Engr. Olubunmi Oluyemi Akitoye</h5>
+          <p class="text-muted mb-2">Director</p>
+          <p class="small text-secondary">
+            Dr. Engr. Olubunmi Oluyemi Akitoye oversees everything, ensuring that students are challenged, inspired, 
+            and equipped with the skills they need for lifelong success.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-primary text-white text-center p-3 mt-5">
+  <p class="mb-0">&copy; 2025 Cachet Bearers Montessori School. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

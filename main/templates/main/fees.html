@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Fees - Cachet Bearers Montessori School</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #32CD32 !important; /* Light green */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    .navbar-brand:hover {
+      color: #e6ffe0 !important;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 6px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #d4ffb2 !important; /* soft highlight */
+    }
+
+    /* Header */
+    .page-header {
+      text-align: center;
+      background: linear-gradient(rgba(50, 205, 50, 0.85), rgba(50, 205, 50, 0.85)),
+                  url("{% static 'images/fees-bg.jpg' %}") no-repeat center center/cover;
+      color: white;
+      padding: 100px 20px;
+    }
+
+    .page-header h1 {
+      font-size: 42px;
+      font-weight: 700;
+    }
+
+    .page-header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    /* Content Area */
+    .content {
+      max-width: 900px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .content h2, .content h3 {
+      color: #32CD32;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #32CD32;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .note, .payment {
+      padding: 18px;
+      margin-top: 25px;
+      border-radius: 8px;
+    }
+
+    .note {
+      background: #f1f9ff;
+      border-left: 5px solid #32CD32;
+    }
+
+    .payment {
+      background: #fff8e5;
+      border-left: 5px solid #f1c40f;
+    }
+
+    .highlight {
+      color: #32CD32;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #32CD32;
+      color: white;
+      padding: 25px;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="{% url 'home' %}">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" width="35" height="35" class="me-2 rounded-circle">
+      Cachet Bearers Montessori School
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'academics' %}active{% endif %}" href="{% url 'academics' %}">Academics</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'admissions' %}active{% endif %}" href="{% url 'admissions' %}">Admissions</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'fees' %}active{% endif %}" href="{% url 'fees' %}">Fees</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="page-header">
+  <h1>School Fees & Payment Details</h1>
+  <p>Affordable quality education at Cachet Bearers Montessori School.</p>
+</section>
+
+<!-- Main Content -->
+<section class="content">
+  <h2>Fee Structure (Per Term)</h2>
+  <table>
+    <tr>
+      <th>Class Level</th>
+      <th>Tuition (₦)</th>
+      <th>Books & Materials (₦)</th>
+      <th>Uniform (₦)</th>
+      <th>Total (₦)</th>
+    </tr>
+    <tr>
+      <td>Crèche</td>
+      <td>30,000</td>
+      <td>5,000</td>
+      <td>5,000</td>
+      <td>40,000</td>
+    </tr>
+    <tr>
+      <td>Nursery</td>
+      <td>40,000</td>
+      <td>10,000</td>
+      <td>5,000</td>
+      <td>55,000</td>
+    </tr>
+    <tr>
+      <td>Primary</td>
+      <td>50,000</td>
+      <td>15,000</td>
+      <td>5,000</td>
+      <td>70,000</td>
+    </tr>
+  </table>
+
+  <div class="note mt-4">
+    <p><strong>Note:</strong> Fees are subject to review based on materials and operational costs. Parents will be notified before any change.</p>
+  </div>
+
+  <h3 class="mt-5">Payment Information</h3>
+  <div class="payment">
+    <p><span class="highlight">Account Name:</span> Cachet Bearers Montessori School<br>
+    <span class="highlight">Bank:</span> Zenith Bank<br>
+    <span class="highlight">Account Number:</span> 0123456789<br>
+    <span class="highlight">Payment Deadline:</span> Within the first two weeks of each term.</p>
+  </div>
+
+  <h3 class="mt-5">Payment Methods</h3>
+  <ul>
+    <li>Bank transfer or direct deposit to the school account</li>
+    <li>POS payment at the school office</li>
+    <li>Cash payment with an official receipt at the bursary</li>
+  </ul>
+
+  <h3 class="mt-5">Receipt & Confirmation</h3>
+  <p>
+    After payment, please submit your proof of payment to the bursary
+    or email <strong>cachetbearerstech@gmail.com</strong> for confirmation.
+  </p>
+
+  <div class="note mt-4">
+    <p>Late payments may attract a small surcharge. Kindly pay promptly to avoid disruption of your child’s learning schedule.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p class="mb-0">&copy; 2025 Cachet Bearers Montessori School. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

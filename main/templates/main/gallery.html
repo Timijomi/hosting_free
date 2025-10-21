@@ -1,0 +1,90 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="text-center py-5 bg-light">
+    <div class="container">
+        <h1 class="fw-bold text-primary mb-4">Gallery</h1>
+        <p class="lead mb-5">
+            A glimpse into life at Cachet Bearers Montessori School — where learning meets creativity.
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/classroom1.jpg' %}" class="card-img-top rounded" alt="Classroom">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/playground.jpg' %}" class="card-img-top rounded" alt="Playground">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/library.jpg' %}" class="card-img-top rounded" alt="Library">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/event.jpg' %}" class="card-img-top rounded" alt="Event">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/students.jpg' %}" class="card-img-top rounded" alt="Students">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/building.jpg' %}" class="card-img-top rounded" alt="School Building">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/careerday.jpg' %}" class="card-img-top rounded" alt="Career Day">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/event2.jpg' %}" class="card-img-top rounded" alt="School Event">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/culturalday.jpg' %}" class="card-img-top rounded" alt="Cultural Day">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/event3.jpg' %}" class="card-img-top rounded" alt="Special Event">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/playground2.jpg' %}" class="card-img-top rounded" alt="Outdoor Activity">
+                </div>
+            </div>
+
+               <div class="col-md-4">
+                <div class="card shadow-sm border-0 gallery-frame">
+                    <img src="{% static 'images/babyclass.jpg' %}" class="card-img-top rounded" alt="Outdoor Activity">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
