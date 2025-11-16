@@ -3,7 +3,7 @@ services:
     name: cachet-school
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn yourproject.wsgi"
+    startCommand: "gunicorn schoolwebsite.wsgi"
     plan: free
     region: frankfurt
 
