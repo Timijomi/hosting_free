@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admissions - Cachet Bearers Montessori School</title>
+  <title>Admissions - Cachet Bearers Montessori Schools</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
   <style>
     /* Navbar - Light Green Theme */
     .navbar {
-      background-color: #32CD32 !important; /* light green */
+      background-color: #32CD32 !important;
     }
     .navbar-brand {
       color: white !important;
@@ -27,7 +28,7 @@
       font-weight: 500;
     }
     .nav-link:hover, .nav-link.active {
-      color: #d4ffb2 !important; /* soft green highlight */
+      color: #d4ffb2 !important;
     }
 
     /* Footer */
@@ -50,9 +51,17 @@
       border-radius: 12px;
     }
 
-    /* Headings */
     h1, h2, h3 {
       font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Button */
+    .btn-success {
+      background-color: #32CD32;
+      border: none;
+    }
+    .btn-success:hover {
+      background-color: #28a428;
     }
   </style>
 </head>
@@ -62,8 +71,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top">
   <div class="container">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="{% url 'home' %}">
-      <img src="{% static 'images/logo.png' %}" alt="Logo" width="35" height="35" class="me-2 rounded-circle">
-      Cachet Bearers Montessori School
+      <img src="{% static 'images/Logo.jpg' %}" alt="Logo" width="35" height="35" class="me-2 rounded-circle">
+      Cachet Bearers Montessori Schools
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,7 +108,7 @@
     <div class="card shadow-sm border-0">
       <div class="card-body p-5">
         <h2 class="fw-bold text-primary mb-4">Admission Overview</h2>
-        <p>At <strong>Cachet Bearers Montessori School</strong>, we welcome students into a nurturing environment designed to inspire creativity, confidence, and growth. Our admission process is straightforward and transparent.</p>
+        <p>At <strong>Cachet Bearers Montessori Schools</strong>, we welcome pupils into a nurturing environment designed to inspire creativity, confidence, and growth. Our admission process is straightforward and transparent.</p>
 
         <h3 class="fw-bold text-primary mt-5 mb-3">Admission Procedure</h3>
         <ol class="ps-3">
@@ -144,10 +153,159 @@
   </div>
 </section>
 
+<!-- Admission Form Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-5">
+        <h2 class="fw-bold text-primary mb-4">Admission Application Form</h2>
+        <form method="post" action="#">
+          {% csrf_token %}
+
+          <!-- Pupil’s Biodata -->
+          <h5 class="fw-bold mb-3"><i class="bi bi-person-fill"></i> Pupil's Biodata</h5>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4">
+              <label class="form-label">Surname</label>
+              <input type="text" name="surname" class="form-control" placeholder="Student's Surname" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Firstname</label>
+              <input type="text" name="firstname" class="form-control" placeholder="Student's Firstname" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Othername (optional)</label>
+              <input type="text" name="othername" class="form-control" placeholder="Othername">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Birthday</label>
+              <input type="date" name="birthday" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Gender</label>
+              <select name="gender" class="form-select" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Religion</label>
+              <input type="text" name="religion" class="form-control" placeholder="Religion">
+            </div>
+          </div>
+
+          <!-- Academic Details -->
+          <h5 class="fw-bold mb-3"><i class="bi bi-mortarboard-fill"></i> Academic Details</h5>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4">
+              <label class="form-label">Last School Attended</label>
+              <input type="text" name="last_school" class="form-control" placeholder="Name of school">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Last Classroom</label>
+              <input type="text" name="last_class" class="form-control" placeholder="Classroom at last school">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Last Result</label>
+              <select name="last_result" class="form-select">
+                <option value="">Promoted or not</option>
+                <option>Promoted</option>
+                <option>Not Promoted</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Reason for leaving last school</label>
+              <input type="text" name="reason" class="form-control" placeholder="If applicable">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Seeking Admission Into</label>
+              <select name="admission_class" class="form-select" required>
+                <option value="">--Prospective Classroom--</option>
+                <option>Creche</option>
+                <option>Pre-Nursery 1</option>
+                <option>Pre-Nursery 2</option>
+                <option>Nursery 1</option>
+                <option>Nursery 2</option>
+                <option>Primary 1</option>
+                <option>Primary 2</option>
+                <option>Primary 3</option>
+                <option>Primary 4</option>
+                <option>Primary 5</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Session</label>
+              <input type="text" name="session" class="form-control" value="2025">
+            </div>
+          </div>
+
+          <!-- Local Guardian Details -->
+          <h5 class="fw-bold mb-3"><i class="bi bi-people-fill"></i> Local Guardian's Details</h5>
+          <div class="row g-3 mb-4">
+            <div class="col-md-2">
+              <label class="form-label">Title</label>
+              <select name="title" class="form-select">
+                <option>Mr</option>
+                <option>Mrs</option>
+                <option>Miss</option>
+                <option>Dr</option>
+              </select>
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">Surname</label>
+              <input type="text" name="guardian_surname" class="form-control" placeholder="Parent's Surname" required>
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">Firstname</label>
+              <input type="text" name="guardian_firstname" class="form-control" placeholder="Parent's Firstname" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Occupation</label>
+              <input type="text" name="occupation" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Address</label>
+              <input type="text" name="address" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Contact Phone</label>
+              <input type="tel" name="phone" class="form-control" placeholder="+234...">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" value="samueltolutj4@gmail.com">
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="mb-3">
+            <label class="form-label">Message (Optional)</label>
+            <textarea name="message" class="form-control" rows="3" placeholder="Optional message for the school admin"></textarea>
+          </div>
+
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" required>
+            <label class="form-check-label">
+              I agree to the portal's <a href="#">terms</a> & <a href="#">privacy policy</a>.
+            </label>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success px-5 py-2 fw-bold">
+              Submit Application
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="text-white text-center p-3 mt-5">
   <div class="container">
-    <p class="mb-0">&copy; 2025 Cachet Bearers Montessori School. All Rights Reserved.</p>
+    <p class="mb-0">&copy; 2025 Cachet Bearers Montessori Schools. All Rights Reserved.</p>
   </div>
 </footer>
 

@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cachet-school
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn yourproject.wsgi"
+    plan: free
+    region: frankfurt
+
+staticPublishPath: /staticfiles
