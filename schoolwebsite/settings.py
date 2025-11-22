@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wih5ry7dlctj*w=zf$2y=cd5_^g=09m1p3m$z!xcxk4fduww5-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -144,11 +144,14 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # --- Email Configuration ---
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'cachetbearerstech@gmail.com'  # Replace with your Gmail
-EMAIL_HOST_PASSWORD = 'your_app_password'  # Replace with App Password (not normal Gmail password)
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'cachetbearerstech@gmail.com'
+EMAIL_HOST_PASSWORD = 'tazaaefxbrfnsrnf'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
