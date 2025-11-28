@@ -9,10 +9,6 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
-import os
-SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-
 import os
 
 from pathlib import Path
@@ -156,6 +152,11 @@ EMAIL_HOST_PASSWORD = 'tazaaefxbrfnsrnf'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+import os
 
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
