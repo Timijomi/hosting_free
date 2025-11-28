@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submitted Successfully</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #269a5eff, #0bd70bd4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .success-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px 40px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            max-width: 500px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .success-container h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .success-container p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+
+        .success-container a {
+            text-decoration: none;
+            color: #0fe33dff;
+            background: #fff;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .success-container a:hover {
+            background: #25fc62ff;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <h2>Form Submitted Successfully</h2>
+        <p>Thank you for your application. We will review it and get back to you shortly.</p>
+        <a href="/">Go Back Home</a>
+    </div>
+</body>
+</html>
