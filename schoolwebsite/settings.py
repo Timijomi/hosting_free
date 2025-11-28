@@ -57,7 +57,7 @@ ROOT_URLCONF = 'schoolwebsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [BASE_DIR / "main" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,23 +134,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "main" / "static",
+    BASE_DIR / "static",
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 
+
 # --- Email Configuration ---
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'cachetbearerstech@gmail.com'
-EMAIL_HOST_PASSWORD = 'tazaaefxbrfnsrnf'
+EMAIL_HOST_PASSWORD = 'tazaaefxbrfnsrnf'   # App password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
 
 import os
 

@@ -4,7 +4,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-# Create your views here.
 def home(request):
     return render(request, 'main/index.html')
 
@@ -17,13 +16,8 @@ def academics(request):
 def gallery(request):
     return render(request, 'main/gallery.html')
 
-def admissions(request):
-    return render(request, 'admissions.html')
-
 def fees(request):
-    return render(request, 'fees.html')
-
-
+    return render(request, 'main/fees.html')
 
 
 def contact(request):
@@ -34,14 +28,14 @@ def contact(request):
 
         subject = f"New Contact Message from {name}"
         body = f"""
-        You have received a new message from the school website:
+You have received a new message from the school website:
 
-        Name: {name}
-        Email: {email}
+Name: {name}
+Email: {email}
 
-        Message:
-        {message}
-        """
+Message:
+{message}
+"""
 
         try:
             send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, ['cachetbearerstech@gmail.com'])
@@ -56,11 +50,9 @@ def contact(request):
 
 
 
-
-from django.shortcuts import render
-from django.core.mail import send_mail
-from django.conf import settings
-
+# -------------------------------
+# FIXED ADMISSIONS FUNCTION
+# -------------------------------
 def admissions(request):
     if request.method == 'POST':
         surname = request.POST.get('surname')
@@ -88,10 +80,9 @@ def admissions(request):
 
         message = request.POST.get('message')
 
-        # Prepare email
         subject = f"New Admission Application - {surname} {firstname}"
         body = f"""
-New Admission Application Submitted:
+NEW ADMISSION APPLICATION:
 
 --- PUPIL'S BIODATA ---
 Surname: {surname}
@@ -103,7 +94,7 @@ Religion: {religion}
 
 --- ACADEMIC DETAILS ---
 Last School Attended: {last_school}
-Last Classroom: {last_class}
+Last Class: {last_class}
 Last Result: {last_result}
 Reason for Leaving: {reason}
 Admission Into: {admission_class}
@@ -111,7 +102,7 @@ Session: {session}
 
 --- GUARDIAN DETAILS ---
 Title: {title}
-Guardian Name: {guardian_surname} {guardian_firstname}
+Guardian: {guardian_surname} {guardian_firstname}
 Occupation: {occupation}
 Address: {address}
 Phone: {phone}
@@ -119,19 +110,20 @@ Email: {email}
 
 --- MESSAGE ---
 {message}
-        """
+"""
 
-        # SEND EMAIL
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            ['cachetbearerstech@gmail.com'],  # where you want to receive admission alerts
-            fail_silently=False,
-        )
+        try:
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                ['cachetbearerstech@gmail.com'],
+                fail_silently=False,
+            )
+        except Exception as e:
+            print("Admission Email Error:", e)
+            return render(request, 'success.html', {'name': firstname, 'error': True})
 
-        return render(request, 'success.html', {
-            'name': firstname
-        })
+        return render(request, 'success.html', {'name': firstname})
 
-    return render(request, 'admissions.html')
+    return render(request, 'main/admissions.html')
