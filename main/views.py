@@ -122,8 +122,9 @@ Email: {email}
             )
         except Exception as e:
             print("Admission Email Error:", e)
-            return render(request, 'success.html', {'name': firstname, 'error': True})
+            return render(request, 'main/success.html', {'name': firstname, 'error': True})
+        
+        return render(request, 'main/success.html', {'name': firstname})
 
-        return render(request, 'success.html', {'name': firstname})
 
     return render(request, 'main/admissions.html')
