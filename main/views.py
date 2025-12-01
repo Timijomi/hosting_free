@@ -1,60 +1,12 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.core.mail import send_mail
-from django.conf import settings
+from django.shortcuts import render
+from mailersend import emails
+import os
 
+MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")  # Set this in Render environment
 
-def home(request):
-    return render(request, 'main/index.html')
-
-def about(request):
-    return render(request, 'main/about.html')
-
-def academics(request):
-    return render(request, 'main/academics.html')
-
-def gallery(request):
-    return render(request, 'main/gallery.html')
-
-def fees(request):
-    return render(request, 'main/fees.html')
-
-
-def contact(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
-
-        subject = f"New Contact Message from {name}"
-        body = f"""
-You have received a new message from the school website:
-
-Name: {name}
-Email: {email}
-
-Message:
-{message}
-"""
-
-        try:
-            send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, ['cachetbearerstech@gmail.com'])
-            messages.success(request, f"Thank you {name}, your message has been sent successfully!")
-        except Exception as e:
-            print("Email sending error:", e)
-            messages.error(request, "Sorry, we couldn't send your message. Please try again later.")
-
-        return redirect("contact")
-
-    return render(request, "main/contact.html")
-
-
-
-# -------------------------------
-# FIXED ADMISSIONS FUNCTION
-# -------------------------------
 def admissions(request):
     if request.method == 'POST':
+        # --- PUPIL'S BIODATA ---
         surname = request.POST.get('surname')
         firstname = request.POST.get('firstname')
         othername = request.POST.get('othername')
@@ -62,14 +14,15 @@ def admissions(request):
         gender = request.POST.get('gender')
         religion = request.POST.get('religion')
 
+        # --- ACADEMIC DETAILS ---
         last_school = request.POST.get('last_school')
         last_class = request.POST.get('last_class')
         last_result = request.POST.get('last_result')
         reason = request.POST.get('reason')
-
         admission_class = request.POST.get('admission_class')
         session = request.POST.get('session')
 
+        # --- GUARDIAN DETAILS ---
         title = request.POST.get('title')
         guardian_surname = request.POST.get('guardian_surname')
         guardian_firstname = request.POST.get('guardian_firstname')
@@ -78,10 +31,11 @@ def admissions(request):
         phone = request.POST.get('phone')
         email = request.POST.get('email')
 
+        # --- MESSAGE ---
         message = request.POST.get('message')
 
-        subject = f"New Admission Application - {surname} {firstname}"
-        body = f"""
+        # --- Construct Email Content ---
+        content = f"""
 NEW ADMISSION APPLICATION:
 
 --- PUPIL'S BIODATA ---
@@ -112,19 +66,20 @@ Email: {email}
 {message}
 """
 
+        # --- Send Email via MailerSend API ---
+        email_msg = emails.Email(
+            api_key=MAILERSEND_API_KEY,
+            sender="cachetbearersschools.com",           # Verified MailerSend sender
+            to=["cachetbearerstech@gmail.com"],     # Your email
+            subject=f"New Admission Application - {surname} {firstname}",
+            html=f"<pre>{content}</pre>"
+        )
+
         try:
-            send_mail(
-                subject,
-                body,
-                settings.DEFAULT_FROM_EMAIL,
-                ['cachetbearerstech@gmail.com'],
-                fail_silently=False,
-            )
+            email_msg.send()
+            return render(request, 'main/success.html', {'name': firstname})
         except Exception as e:
             print("Admission Email Error:", e)
             return render(request, 'main/success.html', {'name': firstname, 'error': True})
-        
-        return render(request, 'main/success.html', {'name': firstname})
-
 
     return render(request, 'main/admissions.html')
