@@ -150,7 +150,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 EMAIL_HOST_USER = os.environ.get("cachetbearerstech@gmail.com")
-EMAIL_HOST_PASSWORD = os.environ.get("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")
+EMAIL_HOST_PASSWORD = os.environ.get("xsmtpsib-e387713b6c4faf263804800a1e9bca0c7a15ba65240fb7386501c5e5085c4cc4-rn6ZmHfwFTePfoFr")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
