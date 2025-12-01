@@ -141,19 +141,22 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 
-# --- Email Configuration (Render) ---
+# --- Email Configuration (Render + Brevo) ---
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_PORT = int(os.environ.get("EMAIL_PORT"))
+# Brevo SMTP settings
+EMAIL_HOST = "smtp-relay.brevo.com"
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
 
-EMAIL_HOST_USER = os.environ.get("cachetbearerstech@gmail.com")
+# Sender email
+EMAIL_HOST_USER = "cachetbearerstech@gmail.com"
+
+# Get Brevo SMTP key from Render environment
 EMAIL_HOST_PASSWORD = os.getenv("BREVO_SMTP_KEY")
 
-
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 
 import os
