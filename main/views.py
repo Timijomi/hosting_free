@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from mailersend import MailerSend, Email
+from mailersend import emails
 import os
 
 # MailerSend API key from environment
