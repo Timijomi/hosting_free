@@ -4,28 +4,28 @@ import os
 
 # Static pages
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'main/index.html')
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'main/about.html')
 
 def academics(request):
-    return render(request, 'academics.html')
+    return render(request, 'main/academics.html')
 
 def base(request):
-    return render(request, 'base.html')
+    return render(request, 'main/base.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'main/contact.html')
 
 def fees(request):
-    return render(request, 'fees.html')
+    return render(request, 'main/fees.html')
 
 def gallery(request):
-    return render(request, 'gallery.html')
+    return render(request, 'main/gallery.html')
 
 def success(request):
-    return render(request, 'success.html')
+    return render(request, 'main/success.html')
 
 
 # MailerSend API key
