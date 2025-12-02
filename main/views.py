@@ -1,6 +1,32 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
+
+# -------------------- Static Pages --------------------
+def index(request):
+    return render(request, 'main/index.html')
+
+def about(request):
+    return render(request, 'main/about.html')
+
+def academics(request):
+    return render(request, 'main/academics.html')
+
+def base(request):
+    return render(request, 'main/base.html')
+
+def contact(request):
+    return render(request, 'main/contact.html')
+
+def fees(request):
+    return render(request, 'main/fees.html')
+
+def gallery(request):
+    return render(request, 'main/gallery.html')
+
+def success(request):
+    return render(request, 'main/success.html')
+
 
 # -------------------- Admissions Form --------------------
 def admissions(request):
@@ -66,17 +92,18 @@ Email: {email}
 """
 
         try:
+            # Send email via Gmail
             send_mail(
                 subject=f"New Admission Application - {surname} {firstname}",
                 message=content,
-                from_email=settings.DEFAULT_FROM_EMAIL,  # your Gmail
+                from_email=settings.DEFAULT_FROM_EMAIL,  # e.g., your Gmail
                 recipient_list=['cachetbearerstech@gmail.com'],
                 fail_silently=False,
             )
             return render(request, "main/success.html", {"name": firstname})
 
         except Exception as e:
-            print("Gmail Error:", e)
+            print("Gmail sending error:", e)
             error_message = "We could not send your application at this time. Please try again later."
             return render(request, "main/admissions.html", {"error": error_message})
 
