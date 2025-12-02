@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from mailersend import emails
+from mailersend import Email
+
 import os
 
 MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")
