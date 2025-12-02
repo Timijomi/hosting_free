@@ -1,35 +1,6 @@
 from django.shortcuts import render
-from mailersend import emails
-import os
-
-# MailerSend API key from environment
-MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")
-
-# -------------------- Static pages --------------------
-def index(request):
-    return render(request, 'main/index.html')
-
-def about(request):
-    return render(request, 'main/about.html')
-
-def academics(request):
-    return render(request, 'main/academics.html')
-
-def base(request):
-    return render(request, 'main/base.html')
-
-def contact(request):
-    return render(request, 'main/contact.html')
-
-def fees(request):
-    return render(request, 'main/fees.html')
-
-def gallery(request):
-    return render(request, 'main/gallery.html')
-
-def success(request):
-    return render(request, 'main/success.html')
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 # -------------------- Admissions Form --------------------
 def admissions(request):
@@ -95,26 +66,17 @@ Email: {email}
 """
 
         try:
-            # Initialize MailerSend client
-            mailer = MailerSend(api_key=MAILERSEND_API_KEY)
-
-            # Create email
-            email_data = emails.NewEmail(
-                sender={"email": "no-reply@cachetbearersschools.com", "name": "CB Schools Website"},
-                to=[{"email": "cachetbearerstech@gmail.com"}],
+            send_mail(
                 subject=f"New Admission Application - {surname} {firstname}",
-                html=f"<pre>{content}</pre>"
+                message=content,
+                from_email=settings.DEFAULT_FROM_EMAIL,  # your Gmail
+                recipient_list=['cachetbearerstech@gmail.com'],
+                fail_silently=False,
             )
-
-            # Send email
-            mailer.emails.send(email_data)
-
-            # Email sent successfully
             return render(request, "main/success.html", {"name": firstname})
 
         except Exception as e:
-            # Email failed, show friendly message
-            print("MailerSend Error:", e)
+            print("Gmail Error:", e)
             error_message = "We could not send your application at this time. Please try again later."
             return render(request, "main/admissions.html", {"error": error_message})
 

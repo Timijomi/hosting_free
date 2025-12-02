@@ -104,13 +104,15 @@ STATIC_ROOT = BASE_DIR / "staticfiles"  # for collectstatic in production
 # ---------- EMAIL CONFIGURATION ----------
 import os
 
+# Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailersend.net'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'  # literally the string 'apikey'
-EMAIL_HOST_PASSWORD = os.environ.get('MAILERSEND_API_KEY')  # Set this in Render
-DEFAULT_FROM_EMAIL = 'cachetbearerstech@gmail.com'  # Must be verified in MailerSend
+EMAIL_HOST_USER = 'cachetbearerstech@gmail.com'       # Replace with your Gmail
+EMAIL_HOST_PASSWORD = 'tazaaefxbrfnsrnf'    # Use App Password (explained below)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 
 
