@@ -84,7 +84,11 @@ USE_TZ = True
 
 # ---------- STATIC FILES (FIXED) ----------
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / "main" / "static",  # or os.path.join(BASE_DIR, "main", "static")
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"  # for collectstatic in production
+
 
 # DO NOT ADD STATICFILES_DIRS because your static folder is inside main/static/
 # Django automatically detects it because APP_DIRS=True.
@@ -111,3 +115,15 @@ DEFAULT_FROM_EMAIL = 'cachetbearerstech@gmail.com'  # Must be verified in Mailer
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+
+
+
+
+
+
+

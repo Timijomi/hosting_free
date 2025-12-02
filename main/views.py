@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from mailersend import Email
+from mailersend import emails, MailerSend
 import os
 
-# Static pages
+# MailerSend API key from environment
+MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")
+
+# -------------------- Static pages --------------------
 def index(request):
     return render(request, 'main/index.html')
 
@@ -28,11 +31,7 @@ def success(request):
     return render(request, 'main/success.html')
 
 
-# MailerSend API key
-MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")
-
-
-# Admissions view
+# -------------------- Admissions Form --------------------
 def admissions(request):
     if request.method == 'POST':
         # --- PUPIL'S BIODATA ---
@@ -95,27 +94,24 @@ Email: {email}
 {message}
 """
 
-        # -------- SEND EMAIL WITH MAILERSEND --------
-        mailer = Email(api_key=MAILERSEND_API_KEY)
-
-        email_data = {
-            "from": {
-                "email": "no-reply@cachetbearersschools.com",
-                "name": "CB Schools Website"
-            },
-            "to": [
-                {
-                    "email": "cachetbearerstech@gmail.com"
-                }
-            ],
-            "subject": f"New Admission Application - {surname} {firstname}",
-            "html": f"<pre>{content}</pre>"
-        }
-
         try:
-            mailer.send(email_data)
+            # Initialize MailerSend client
+            mailer = MailerSend(api_key=MAILERSEND_API_KEY)
+
+            # Create email
+            email_data = emails.NewEmail(
+                sender={"email": "no-reply@cachetbearersschools.com", "name": "CB Schools Website"},
+                to=[{"email": "cachetbearerstech@gmail.com"}],
+                subject=f"New Admission Application - {surname} {firstname}",
+                html=f"<pre>{content}</pre>"
+            )
+
+            # Send email
+            mailer.emails.send(email_data)
+
             # Email sent successfully
             return render(request, "main/success.html", {"name": firstname})
+
         except Exception as e:
             # Email failed, show friendly message
             print("MailerSend Error:", e)
