@@ -2,6 +2,10 @@ from django.shortcuts import render
 from mailersend import Email
 import os
 
+
+def home(request):
+    return render(request, 'main/home.html')
+
 MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")
 
 def admissions(request):
