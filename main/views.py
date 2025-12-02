@@ -2,31 +2,39 @@ from django.shortcuts import render
 from mailersend import Email
 import os
 
+# Static pages
 def index(request):
-    return render(request, 'main/home.html')
+    return render(request, 'index.html')
+
 def about(request):
-    return render(request, 'main/about.html')
+    return render(request, 'about.html')
+
 def academics(request):
-    return render(request, 'main/academics.html')
-def admissions(request):
-    return render(request, 'main/admissions.html')
-def contact(request):
-    return render(request, 'main/contact.html')
-def fees(request):
-    return render(request, 'main/fees.html')
-def gallery(request):
-    return render(request, 'main/gallery.html')
-def success(request):
-    return render(request, 'main/success.html')
+    return render(request, 'academics.html')
+
 def base(request):
-    return render(request, 'main/base.html')
+    return render(request, 'base.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def fees(request):
+    return render(request, 'fees.html')
+
+def gallery(request):
+    return render(request, 'gallery.html')
+
+def success(request):
+    return render(request, 'success.html')
 
 
+# MailerSend API key
 MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")
 
+
+# Admissions view
 def admissions(request):
     if request.method == 'POST':
-
         # --- PUPIL'S BIODATA ---
         surname = request.POST.get('surname')
         firstname = request.POST.get('firstname')
@@ -88,7 +96,7 @@ Email: {email}
 """
 
         # -------- SEND EMAIL WITH MAILERSEND --------
-        mailer = emails.NewEmail(api_key=MAILERSEND_API_KEY)
+        mailer = Email(api_key=MAILERSEND_API_KEY)
 
         email_data = {
             "from": {
@@ -106,9 +114,12 @@ Email: {email}
 
         try:
             mailer.send(email_data)
+            # Email sent successfully
+            return render(request, "main/success.html", {"name": firstname})
         except Exception as e:
+            # Email failed, show friendly message
             print("MailerSend Error:", e)
-
-        return render(request, "main/success.html", {"name": firstname})
+            error_message = "We could not send your application at this time. Please try again later."
+            return render(request, "main/admissions.html", {"error": error_message})
 
     return render(request, "main/admissions.html")
