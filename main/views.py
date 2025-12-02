@@ -1,10 +1,6 @@
 from django.shortcuts import render
-from mailersend import Email
+from mailersend import emails
 import os
-
-
-def home(request):
-    return render(request, 'main/home.html')
 
 MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")
 
@@ -71,21 +67,28 @@ Email: {email}
 {message}
 """
 
-        # --- Send Email via MailerSend ---
+        # -------- SEND EMAIL WITH MAILERSEND --------
+        mailer = emails.NewEmail(api_key=MAILERSEND_API_KEY)
+
+        email_data = {
+            "from": {
+                "email": "no-reply@cachetbearersschools.com",
+                "name": "CB Schools Website"
+            },
+            "to": [
+                {
+                    "email": "cachetbearerstech@gmail.com"
+                }
+            ],
+            "subject": f"New Admission Application - {surname} {firstname}",
+            "html": f"<pre>{content}</pre>"
+        }
+
         try:
-            mailer = Email(api_key=MAILERSEND_API_KEY)
-
-            mailer.set_mail_from("cachetbearersschools.com")  # your verified domain
-            mailer.set_mail_to(["cachetbearerstech@gmail.com"])
-            mailer.set_subject(f"New Admission Application - {surname} {firstname}")
-            mailer.set_html(f"<pre>{content}</pre>")
-
-            mailer.send()
-
-            return render(request, "main/success.html", {"name": firstname})
-
+            mailer.send(email_data)
         except Exception as e:
-            print("Admission Email Error:", e)
-            return render(request, "main/success.html", {"name": firstname, "error": True})
+            print("MailerSend Error:", e)
+
+        return render(request, "main/success.html", {"name": firstname})
 
     return render(request, "main/admissions.html")
