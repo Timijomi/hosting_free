@@ -4,6 +4,22 @@ import os
 
 def index(request):
     return render(request, 'main/home.html')
+def about(request):
+    return render(request, 'main/about.html')
+def academics(request):
+    return render(request, 'main/academics.html')
+def admissions(request):
+    return render(request, 'main/admissions.html')
+def contact(request):
+    return render(request, 'main/contact.html')
+def fees(request):
+    return render(request, 'main/fees.html')
+def gallery(request):
+    return render(request, 'main/gallery.html')
+def success(request):
+    return render(request, 'main/success.html')
+def base(request):
+    return render(request, 'main/base.html')
 
 
 MAILERSEND_API_KEY = os.environ.get("MAILERSEND_API_KEY")
