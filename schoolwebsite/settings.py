@@ -39,7 +39,7 @@ ROOT_URLCONF = 'schoolwebsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "main" / "templates"],
+        'DIRS': [],  # <-- FIXED
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -50,6 +50,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'schoolwebsite.wsgi.application'
 
