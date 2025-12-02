@@ -2,7 +2,7 @@ from django.shortcuts import render
 from mailersend import Email
 import os
 
-def home(request):
+def index(request):
     return render(request, 'main/home.html')
 
 
